@@ -10,6 +10,8 @@ import Layout from './layout';
 import ProductList from './component/ProductList/ProductList';
 import Category from './component/Category/Category';
 import StoreManage from './component/StoreManage/StoreManage';
+import UploadText from './component/Upload/UploadText';
+import UploadButton from './component/Upload/UploadButton';
 
 function App(): JSX.Element {
   return (
@@ -28,8 +30,8 @@ function App(): JSX.Element {
         },
       })}
     >
-      <StoreManage />
       <CssBaseline />
+      <UploadButton />
       <StyledEngineProvider injectFirst>
         <Layout />
       </StyledEngineProvider>
