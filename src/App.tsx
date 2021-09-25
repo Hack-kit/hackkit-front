@@ -10,7 +10,18 @@ import Layout from './layout';
 
 function App(): JSX.Element {
   return (
-    <ThemeProvider theme={createTheme()}>
+    <ThemeProvider
+      theme={createTheme({
+        palette: {
+          primary: {
+            main: '#000000',
+          },
+          secondary: {
+            main: '#FFFFFF',
+          },
+        },
+      })}
+    >
       <CssBaseline />
       <StyledEngineProvider injectFirst>
         <Layout />

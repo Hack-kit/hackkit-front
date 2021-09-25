@@ -7,7 +7,7 @@ export default function BottomNavigation(): JSX.Element {
   return (
     <AppBar
       position="fixed"
-      color="transparent"
+      color="secondary"
       component="nav"
       sx={{
         bottom: 0,
