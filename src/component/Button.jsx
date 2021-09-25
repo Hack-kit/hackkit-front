@@ -3,5 +3,4 @@ import { Button } from "@material-ui/core";
 
 
 export default ({children}) => (
-    <Button variant="contained" color="primary">{children}</Button>
-  );
+    <Button variant="contained" color="primary">{children}</Button>);

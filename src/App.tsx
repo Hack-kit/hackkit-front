@@ -7,6 +7,9 @@ import {
 } from '@mui/material';
 
 import Layout from './layout';
+import ProductList from './component/ProductList/ProductList';
+import Category from './component/Category/Category';
+import StoreManage from './component/StoreManage/StoreManage';
 
 function App(): JSX.Element {
   return (
@@ -22,6 +25,7 @@ function App(): JSX.Element {
         },
       })}
     >
+      <StoreManage />
       <CssBaseline />
       <StyledEngineProvider injectFirst>
         <Layout />
