@@ -1,32 +1,70 @@
 import React from 'react';
-import { AppBar, IconButton, Grid } from '@mui/material';
+import { AppBar, IconButton, Grid, Typography } from '@mui/material';
 import SVG from '../../svg';
 
 export default () => (
-  <Grid container>
+  <Grid
+    container
+    wrap="nowrap"
+    justifyContent="space-evenly"
+    alignItems="center"
+    mt={3}
+  >
     <Grid item>
-      <IconButton color="primary">
-        <SVG.Vegetable css={{ width: 60, height: 60 }} />
-        야채
-      </IconButton>
+      <Grid container direction="column">
+        <Grid item>
+          <IconButton color="primary">
+            <SVG.Vegetable css={{ width: 40, height: 40 }} />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1" align="center">
+            야채
+          </Typography>
+        </Grid>
+      </Grid>
     </Grid>
     <Grid item>
-      <IconButton color="primary">
-        <SVG.Meat css={{ width: 60, height: 60 }} />
-        과일
-      </IconButton>
+      <Grid container direction="column">
+        <Grid item>
+          <IconButton color="primary">
+            <SVG.Meat css={{ width: 40, height: 40 }} />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1" align="center">
+            과일
+          </Typography>
+        </Grid>
+      </Grid>
     </Grid>
     <Grid item>
-      <IconButton color="primary">
-        <SVG.Harvest css={{ width: 60, height: 60 }} />
-        육류
-      </IconButton>
+      <Grid container direction="column">
+        <Grid item>
+          <IconButton color="primary">
+            <SVG.Harvest css={{ width: 40, height: 40 }} />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1" align="center">
+            육류
+          </Typography>
+        </Grid>
+      </Grid>
     </Grid>
     <Grid item>
-      <IconButton color="primary">
-        <SVG.Fish css={{ width: 60, height: 60 }} />
-        수산
-      </IconButton>
+      <Grid container direction="column">
+        <Grid item>
+          <IconButton color="primary">
+            <SVG.Fish css={{ width: 40, height: 40 }} />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1" align="center">
+            수산
+          </Typography>
+        </Grid>
+      </Grid>
     </Grid>
   </Grid>
 );

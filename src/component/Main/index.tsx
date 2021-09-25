@@ -2,15 +2,23 @@ import React from 'react';
 import GoogleLogin from 'react-google-login';
 import { useHistory } from 'react-router-dom';
 import { Typography, Box, Grid } from '@mui/material';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import Slider from 'react-slick';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import MainButton from '../MainButton';
 import API from '../../API';
 import Atom from './atoms';
+import image from './img.png';
+import Category from '../Category/Category';
+import ProductList from '../ProductList/ProductList';
 
 function Main() {
   const history = useHistory();
   const [user, setUser] = useRecoilState(Atom.userAtom);
+  const setAccessToken = useSetRecoilState(Atom.accessTokenAtom);
 
   return (
     <Box>
@@ -58,7 +66,10 @@ function Main() {
               onSuccess={(res) => {
                 if ('googleId' in res) {
                   API.login(res.googleId).then((result) => {
-                    setUser(result);
+                    if (result !== undefined) {
+                      setUser(result.user);
+                      setAccessToken(result.token);
+                    }
                   });
                 }
               }}
@@ -66,8 +77,14 @@ function Main() {
           </Grid>
         </Grid>
       ) : (
-        <div css={{ width: '100%', height: '30vh' }} />
+        <Slider speed={500} dots infinite slidesToShow={1} slidesToScroll={1}>
+          <img src={image} alt="food" />
+          <img src={image} alt="food" />
+          <img src={image} alt="food" />
+        </Slider>
       )}
+      <Category />
+      <ProductList />
     </Box>
   );
 }

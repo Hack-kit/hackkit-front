@@ -3,7 +3,7 @@ import axios, { AxiosResponse, AxiosError } from 'axios';
 import { ISignupBody } from './component/Signup/interface';
 import { IUser } from './component/Main/interface';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = process.env.REACT_APP_URL;
 
 function errorTypeGuard(error: any): error is AxiosError {
   return error.response !== undefined;
@@ -40,14 +40,24 @@ export default {
     return undefined;
   },
 
-  async login(googleId: string): Promise<IUser | undefined> {
+  async login(
+    googleId: string,
+  ): Promise<{ user: IUser; token: string } | undefined> {
     try {
       const res = (await axios.post(`${BASE_URL}/users/login`, {
         google_id: googleId,
         type: 'Google',
-      })) as AxiosResponse<IUser>;
+      })) as AxiosResponse<{
+        user: IUser;
+        token: {
+          access_token: string;
+        };
+      }>;
       if (res.status === 200) {
-        return res.data;
+        return {
+          user: res.data.user,
+          token: res.data.token.access_token,
+        };
       }
     } catch (error: unknown) {
       if (errorTypeGuard(error)) {
@@ -72,5 +82,18 @@ export default {
       }
     }
     return false;
+  },
+
+  async getFoods(token: string) {
+    try {
+      const res = await axios.get(`${BASE_URL}/stores/food`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data.foods;
+    } catch (e) {
+      return [];
+    }
   },
 };

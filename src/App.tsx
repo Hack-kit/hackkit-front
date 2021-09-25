@@ -29,7 +29,6 @@ function App(): JSX.Element {
       })}
     >
       <CssBaseline />
-      <UploadButton />
       <StyledEngineProvider injectFirst>
         <RecoilRoot>
           <Layout />

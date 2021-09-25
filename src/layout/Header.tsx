@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Grid, IconButton, Typography } from '@mui/material';
 
 import SVG from '../svg';
+import logo from './img.png';
 
 export default function Header(): JSX.Element {
   return (
@@ -15,7 +16,11 @@ export default function Header(): JSX.Element {
       >
         <Grid item xs={1} />
         <Grid item xs={10}>
-          <Typography align="center">로고</Typography>
+          <Grid container alignItems="center" justifyContent="center">
+            <Grid item>
+              <img src={logo} alt="logo" />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={1}>
           <IconButton>

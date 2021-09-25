@@ -5,92 +5,60 @@ import ProductList2 from './ProductList2.png';
 import ProductList3 from './ProductList3.png';
 import ProductList4 from './ProductList4.png';
 import './ProductList.css';
+import API from '../../API';
+import { useRecoilValue } from 'recoil';
+import Atom from '../Main/atoms';
 
-export default () => (
-  <Grid container spacing={1} px={2}>
-    <Grid item xs={12}>
-      <Box
-        bgcolor="secondary"
-        sx={{ display: 'inline' }}
-        color="info.contrastText"
-        p={2}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <img src={ProductList1} alt="" className="productImg" />
-          </Grid>
-          <Grid item xs={6} color="primary">
-            <Typography color="primary">흙대파 1단</Typography>
-            <Typography color="primary">얼음골칡냉면</Typography>
-            <Typography color="primary">1.3km 용인시 수지구</Typography>
-            <Typography color="primary">9000원</Typography>
-          </Grid>
-        </Grid>
-      </Box>
+export default () => {
+  const accessToken = useRecoilValue(Atom.accessTokenAtom);
+  const [foods, setFoods] = React.useState([
+    { name: 'asdf', description: 'asdfasdf' },
+  ]);
+
+  React.useEffect(() => {
+    if (accessToken) {
+      API.getFoods(accessToken).then((res) => {
+        // setFoods(res);
+      });
+    }
+  }, [accessToken]);
+
+  return (
+    <Grid container spacing={1} px={2}>
+      {foods.map((food) => {
+        return (
+          <>
+            <Grid item xs={12}>
+              <Box
+                bgcolor="secondary"
+                sx={{ display: 'inline' }}
+                color="info.contrastText"
+                p={2}
+              >
+                <Grid container spacing={2}>
+                  <Grid item xs={4}>
+                    <img src={ProductList1} alt="" className="productImg" />
+                  </Grid>
+                  <Grid item xs={8}>
+                    <Typography color="black">{food.name}</Typography>
+                    <Typography color="black">{food.description}</Typography>
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        borderColor: 'primary.dark',
+                        color: 'primary.dark',
+                      }}
+                    >
+                      주문하기
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Grid>
+            <Divider width="100%" />
+          </>
+        );
+      })}
     </Grid>
-    <Divider width="100%" />
-    <Grid item xs={12}>
-      <Box
-        bgcolor="secondary"
-        sx={{ display: 'inline' }}
-        color="info.contrastText"
-        p={2}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <img src={ProductList2} alt="" className="productImg" />
-          </Grid>
-          <Grid item xs={6}>
-            <Typography color="primary">흙대파 1단</Typography>
-            <Typography color="primary">얼음골칡냉면</Typography>
-            <Typography color="primary">1.3km 용인시 수지구</Typography>
-            <Typography color="primary">9000원</Typography>
-          </Grid>
-        </Grid>
-      </Box>
-    </Grid>
-    <Divider width="100%" />
-    <Grid item xs={12}>
-      <Box
-        bgcolor="secondary"
-        sx={{ display: 'inline' }}
-        color="info.contrastText"
-        p={2}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <img src={ProductList3} alt="" className="productImg" />
-          </Grid>
-          <Grid item xs={6}>
-            <Typography color="primary">흙대파 1단</Typography>
-            <Typography color="primary">얼음골칡냉면</Typography>
-            <Typography color="primary">1.3km 용인시 수지구</Typography>
-            <Typography color="primary">9000원</Typography>
-          </Grid>
-        </Grid>
-      </Box>
-    </Grid>
-    <Divider width="100%" />
-    <Grid item xs={12}>
-      <Box
-        bgcolor="secondary"
-        sx={{ display: 'inline' }}
-        color="info.contrastText"
-        p={2}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <img src={ProductList4} alt="" className="productImg" />
-          </Grid>
-          <Grid item xs={6}>
-            <Typography color="primary">흙대파 1단</Typography>
-            <Typography color="primary">얼음골칡냉면</Typography>
-            <Typography color="primary">1.3km 용인시 수지구</Typography>
-            <Typography color="primary">9000원</Typography>
-          </Grid>
-        </Grid>
-      </Box>
-    </Grid>
-    <Divider width="100%" />
-  </Grid>
-);
+  );
+};
