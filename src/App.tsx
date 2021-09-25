@@ -5,19 +5,15 @@ import {
   createTheme,
   CssBaseline,
 } from '@mui/material';
-import { BrowserRouter, Route } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
+
+import Layout from './layout';
 
 function App(): JSX.Element {
   return (
     <ThemeProvider theme={createTheme()}>
       <CssBaseline />
       <StyledEngineProvider injectFirst>
-        <BrowserRouter>
-          <Route path="/" exact>
-            <div>main</div>
-          </Route>
-        </BrowserRouter>
+        <Layout />
       </StyledEngineProvider>
     </ThemeProvider>
   );
