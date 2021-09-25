@@ -9,6 +9,8 @@ import {
 import { RecoilRoot } from 'recoil';
 import Layout from './layout';
 import UploadButton from './component/Upload/UploadButton';
+import UploadImg from './component/Upload/UploadImg';
+import ReviewUpload from './component/Review/ReviewUpload';
 
 function App(): JSX.Element {
   return (
@@ -29,7 +31,7 @@ function App(): JSX.Element {
       })}
     >
       <CssBaseline />
-      <UploadButton />
+      <ReviewUpload />
       <StyledEngineProvider injectFirst>
         <RecoilRoot>
           <Layout />
