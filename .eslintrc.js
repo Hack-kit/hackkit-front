@@ -25,6 +25,12 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
     'no-console': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+          endOfLine: 'auto',
+      },
+  ],
   },
   ignorePatterns: ['reportWebVitals.ts', '*.js', '*.jsx'],
 };
