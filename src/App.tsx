@@ -6,6 +6,7 @@ import {
   CssBaseline,
 } from '@mui/material';
 import { BrowserRouter, Route } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
 
 function App(): JSX.Element {
   return (
