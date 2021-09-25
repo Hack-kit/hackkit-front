@@ -10,7 +10,7 @@ function MainButton({ children, ...rest }: ButtonProps): JSX.Element {
         width: 300,
         height: 48,
         borderRadius: 24,
-        color: 'primary.main',
+        color: 'common.black',
         border: '1px solid #FAFAFA',
         boxShadow: '0 10px 10px lightgray',
       }}

@@ -10,12 +10,14 @@ import {
   InputAdornment,
 } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-
+import { useSetRecoilState } from 'recoil';
 import { useLocation } from 'react-router-dom';
+
 import API from '../../API';
 import SVG from '../../svg';
 import MainButton from '../MainButton';
 import { ISignupBody } from './interface';
+import MainAtom from '../Main/atoms';
 
 const StyledTab = styled(Tab)({
   height: 32,
@@ -46,11 +48,17 @@ function Signup() {
       },
     });
 
+  const setUser = useSetRecoilState(MainAtom.userAtom);
+  const setAccessToken = useSetRecoilState(MainAtom.accessTokenAtom);
+
   return (
     <form
       onSubmit={handleSubmit((data) => {
         API.signupUser(data).then((res) => {
-          console.log(res);
+          if (res !== undefined) {
+            setUser(res.user);
+            setAccessToken(res.accessToken);
+          }
         });
       })}
     >

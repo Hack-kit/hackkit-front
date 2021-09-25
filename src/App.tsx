@@ -1,16 +1,13 @@
 import React from 'react';
 import {
-  ThemeProvider,
-  StyledEngineProvider,
   createTheme,
   CssBaseline,
+  StyledEngineProvider,
+  ThemeProvider,
 } from '@mui/material';
 
+import { RecoilRoot } from 'recoil';
 import Layout from './layout';
-import ProductList from './component/ProductList/ProductList';
-import Category from './component/Category/Category';
-import StoreManage from './component/StoreManage/StoreManage';
-import UploadText from './component/Upload/UploadText';
 import UploadButton from './component/Upload/UploadButton';
 
 function App(): JSX.Element {
@@ -19,7 +16,8 @@ function App(): JSX.Element {
       theme={createTheme({
         palette: {
           primary: {
-            main: '#000000',
+            main: '#DEF7D6',
+            dark: '#329E5D',
           },
           secondary: {
             main: '#FFFFFF',
@@ -33,7 +31,9 @@ function App(): JSX.Element {
       <CssBaseline />
       <UploadButton />
       <StyledEngineProvider injectFirst>
-        <Layout />
+        <RecoilRoot>
+          <Layout />
+        </RecoilRoot>
       </StyledEngineProvider>
     </ThemeProvider>
   );
