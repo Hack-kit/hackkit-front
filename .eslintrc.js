@@ -28,9 +28,10 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-          endOfLine: 'auto',
+        endOfLine: 'auto',
       },
-  ],
+    ],
+    'react/jsx-props-no-spreading': 'off',
   },
   ignorePatterns: ['reportWebVitals.ts', '*.js', '*.jsx'],
 };

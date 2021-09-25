@@ -1,6 +1,22 @@
 import React from 'react';
-import BottomNavigation from './BottomNavigation';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-export default function Layout() {
-  return <BottomNavigation />;
+import BottomNavigation from './BottomNavigation';
+import Header from './Header';
+import Signup from '../component/Signup';
+import Main from '../component/Main';
+
+export default function Layout(): JSX.Element {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Route exact path="/">
+        <Main />
+      </Route>
+      <Route path="/signup">
+        <Signup />
+      </Route>
+      <BottomNavigation />
+    </BrowserRouter>
+  );
 }

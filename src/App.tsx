@@ -23,6 +23,9 @@ function App(): JSX.Element {
             main: '#FFFFFF',
           },
         },
+        typography: {
+          fontFamily: 'AppleSDGothicNeo sans-serif',
+        },
       })}
     >
       <StoreManage />
